@@ -17,9 +17,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/form_registrasi', function () {
-    return view('form_registrasi');
-});
+Route::get('/form_registrasi', 'CandidateController@index')->name('form.registrasi');
+Route::post('/registrasi', 'CandidateController@store')->name('registration.store');
 
 Route::get('/data_activity', function () {
     return view('data_activity');
