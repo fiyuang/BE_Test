@@ -31,7 +31,7 @@
                   <h4 class="font-weight-normal mb-3">Kandidat Laki - Laki
                     <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                   </h4>
-                  <h2 class="mb-5"> 150</h2>
+                  <h2 class="mb-5"> {{ $men_candidate }}</h2>
                   <h6 class="card-text">_________________</h6>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                   <h4 class="font-weight-normal mb-3">Kandidat Perempuan
                     <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                   </h4>
-                  <h2 class="mb-5">34</h2>
+                  <h2 class="mb-5">{{ $women_candidate }}</h2>
                   <h6 class="card-text">_________________</h6>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                   <h4 class="font-weight-normal mb-3">Total Kandidat
                     <i class="mdi mdi-diamond mdi-24px float-right"></i>
                   </h4>
-                  <h2 class="mb-5">91</h2>
+                  <h2 class="mb-5">{{ $total_candidate }}</h2>
                   <h6 class="card-text">_________________</h6>
                 </div>
               </div>
@@ -72,6 +72,9 @@
                       <thead>
                         <tr>
                           <th>
+                            No.
+                          </th>
+                          <th>
                             Nama lengkap
                           </th>
                           <th>
@@ -83,50 +86,17 @@
                         </tr>
                       </thead>
                       <tbody>
+                      @php $i = 1 @endphp
+                        @foreach ($candidates as $candidate)
                         <tr>
-                          <td>
-                            Fund is not recieved
-                          </td>
-                          <td>
-                            <label class="badge badge-gradient-success">Lain - lain</label>
-                          </td>
-                          <td>
-                            Dec 5, 2017
-                          </td>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $candidate->name }}</td>
+                            <td>
+                                {{ $candidate->candidate_status->code }}
+                            </td>
+                            <td>{{ $candidate->date_formatted }}</td>
                         </tr>
-                        <tr>
-                          <td>
-                            High loading time
-                          </td>
-                          <td>
-                            <label class="badge badge-gradient-warning">Inetnet</label>
-                          </td>
-                          <td>
-                            Dec 12, 2017
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Website down for one week
-                          </td>
-                          <td>
-                            <label class="badge badge-gradient-info">Facebook</label>
-                          </td>
-                          <td>
-                            Dec 16, 2017
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Loosing control on server
-                          </td>
-                          <td>
-                            <label class="badge badge-gradient-danger">Instagram</label>
-                          </td>
-                          <td>
-                            Dec 3, 2017
-                          </td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

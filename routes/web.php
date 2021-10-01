@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
+Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::get('/form_registrasi', 'CandidateController@index')->name('form.registrasi');
 Route::post('/registrasi', 'CandidateController@store')->name('registration.store');
 
