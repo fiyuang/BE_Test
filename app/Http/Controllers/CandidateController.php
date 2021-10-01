@@ -76,16 +76,46 @@ class CandidateController extends Controller
                 $save = $image->move($path, $file_photo_name);
             }
 
-            // create data candidate
-            $result = Candidate::create($request->data_candidate($identity_file_name, null, null));
-
-            \DB::commit();
-
-            if($result){
-                Alert::toast('Data berhasil disimpan', 'success')->padding('10px');
-                return redirect()->back();
+            // upload file portofolio
+            if($request->hasFile('file_portofolio')){
+                $image   = $request->file('file_portofolio');
+                $file_portofolio_name = 'file_portofolio' . '_' . time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('documents/file_portofolio');
+                    if(!File::isDirectory($path)){
+                        File::makeDirectory($path, 0777, true, true);
+                    }
+                $filepath = 'documents/file_portofolio';
+                $save = $image->move($path, $file_portofolio_name);
             }
 
+             // upload file organization
+             if($request->hasFile('file_organization')){
+                $image   = $request->file('file_organization');
+                $filename = 'file_organization' . '_' . time() . '.' . $image->getClientOriginalExtension();
+                $path = public_path('documents/file_organization');
+                    if(!File::isDirectory($path)){
+                        File::makeDirectory($path, 0777, true, true);
+                    }
+                $filepath = 'documents/file_organization';
+                $save = $image->move($path, $filename);
+            }
+
+            // create data candidate
+            $candidate = Candidate::create($request->data_candidate($identity_file_name, $file_cv_name, $file_photo_name, $file_portofolio_name));
+
+            if ($candidate) {
+                \DB::commit();
+
+                // create data candidate organization
+                $candidate_organization = $candidate->candidate_organization()->create($request->candidate_organization($candidate->id, $filename));
+
+                if($candidate_organization){
+                    \DB::commit();
+                    Alert::toast('Data berhasil disimpan', 'success')->padding('10px');
+                    return redirect()->back();
+                }
+            }
+            
         } catch (\Exception $e){
             \DB::rollback();
             Alert::toast($e->getMessage(), 'error')->padding('10px');

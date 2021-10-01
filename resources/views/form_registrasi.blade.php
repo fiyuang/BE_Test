@@ -208,25 +208,25 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="#">Organisasi</label><span class="text-danger">*</span>
-                                                    <input type="text" class="form-control" id="#" placeholder="organisasi">
+                                                    <input type="text" class="form-control" id="org_name" name="org_name" placeholder="organisasi">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="#">Tahun</label><span class="text-danger">*</span>
-                                                    <input type="text" class="form-control" id="#" placeholder="tahun">
+                                                    <input type="text" class="form-control" id="year" name="year" placeholder="tahun">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="#">Jabatan</label><span class="text-danger">*</span>
-                                                    <input type="text" class="form-control" id="#" placeholder="jabatan">
+                                                    <input type="text" class="form-control" id="position" name="position" placeholder="jabatan">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="#">Deskripsi Kegiatan </label><span class="text-danger">*</span>
-                                                    <textarea class="form-control" id="exampleTextarea1" rows="6"></textarea>
+                                                    <textarea class="form-control" id="description" name="description" rows="6"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="#"> File</label>
-                                                    <input type="file" class="form-control" id="#" placeholder="">
+                                                    <input type="file" class="form-control" id="file_organization" name="file_organization" placeholder="">
                                                 </div>
                                             </div>
                                         </div>

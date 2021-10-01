@@ -28,8 +28,8 @@ class CreateCandidatesTable extends Migration
             $table->text('address');
             $table->unsignedBigInteger('education_id');
             $table->unsignedBigInteger('university_id')->nullable();
-            $table->string('university_other');
-            $table->string('major');
+            $table->string('university_other')->nullable();
+            $table->string('major')->nullable();
             $table->string('graduation_year')->nullable();
             $table->tinyInteger('in_college')->nullable();
             $table->string('semester')->nullable();
@@ -41,7 +41,7 @@ class CreateCandidatesTable extends Migration
             $table->text('source_information_other')->nullable();
             $table->integer('rangking')->nullable();
             $table->integer('assessment_score')->nullable();
-            $table->tinyInteger('mail_sent');
+            $table->tinyInteger('mail_sent')->nullable();
             $table->unsignedBigInteger('candidate_status_id');
             $table->timestamps();
 

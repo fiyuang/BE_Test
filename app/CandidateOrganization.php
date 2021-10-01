@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CandidateOrganization extends Model
 {
-    protected $table = 'candidate_organization';
     protected $guarded = [];
 
     public function candidate()

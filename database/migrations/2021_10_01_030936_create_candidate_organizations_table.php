@@ -20,7 +20,7 @@ class CreateCandidateOrganizationsTable extends Migration
             $table->string('year');
             $table->string('position');
             $table->string('description');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
